@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../css/home.css">
 </head>
 <body>
-
+<div id="toast" class="toast hidden"></div>
     <div class="dashboard">
 
         <aside class="sidebar">
@@ -54,7 +54,7 @@
             </section>
 
             <section class="acoes-filtros">
-                <button class="btn-cadastrar" id="abrirModalLivro">+ Cadastrar novo livro</button>
+                <button type="submit" class="btn-cadastrar" id="abrirModalLivro">+ Cadastrar novo livro</button>
 
                 <div class="busca-filtros">
                     <input type="text" placeholder="Buscar livro...">
@@ -104,7 +104,7 @@
     <div class="modal">
         <div class="modal-header">
             <h2>Cadastrar livro</h2>
-            <button class="fechar-modal" id="fecharModalLivro">&times;</button>
+            <button type="submit" class="fechar-modal" id="fecharModalLivro">&times;</button>
         </div>
 
         <form id="formLivro">
@@ -133,5 +133,6 @@
 
     </div>
 
+    <script src="../js/home.js"></script>
 </body>
 </html>

@@ -55,7 +55,16 @@ formLivro.addEventListener("submit", async function (event) {
             })
         });
 
-        const dados = await resposta.json();
+        const texto = await resposta.text();
+        console.log("Resposta da api: ", texto);
+
+        let dados;
+
+        try {
+            dados = JSON.parse(texto);
+        } catch {
+            throw new Error("Api nao retornou")
+        }
 
         if (!resposta.ok) {
             mostrarPopup(dados.mensagem || "Erro ao cadastrar livro", "error");
