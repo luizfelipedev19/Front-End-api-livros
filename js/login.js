@@ -6,7 +6,7 @@ formLogin.addEventListener("submit", async function (event) {
     const email = document.getElementById("email").value.trim();
     const senha = document.getElementById("senha").value.trim();
 
-    try{
+    try {
         const resposta = await fetch("http://localhost:8080/login", {
             method: "POST",
             headers: {
@@ -24,34 +24,41 @@ formLogin.addEventListener("submit", async function (event) {
         console.log("ok", resposta.ok);
         console.log("dados", dados);
 
-        if (!resposta.ok || !dados.token){
-
-            localStorage.removeItem("token");
-            mostrarPopup(dados.mensagem || "Erro ao fazer login", "error" );
+        if (!resposta.ok || !dados.access_token || !dados.refresh_token) {
+            localStorage.removeItem("access_token");
+            localStorage.removeItem("refresh_token");
+            mostrarPopup(dados.mensagem || "Erro ao fazer login", "error");
             return;
         }
 
-        localStorage.setItem("token", dados.token);
+        localStorage.setItem("access_token", dados.access_token);
+        localStorage.setItem("refresh_token", dados.refresh_token);
+
         mostrarPopup(dados.mensagem || "Login realizado com sucesso", "success");
 
-        setTimeout(() => { 
+        setTimeout(() => {
             window.location.href = "home.html";
-        }, 2000)
-        
-    } catch (error){
-        mensagemLogin.textContent = "Erro ao conectar com a API";
+        }, 2000);
+
+    } catch (error) {
         console.error(error);
+        mostrarPopup("Erro ao conectar com a API", "error");
     }
 });
 
-function mostrarPopup(mensagem, tipo = "success"){
+function mostrarPopup(mensagem, tipo = "success") {
     const toast = document.getElementById("toast");
+
+    if (!toast) {
+        console.error("Elemento #toast não encontrado");
+        return;
+    }
 
     toast.textContent = mensagem;
     toast.className = `toast ${tipo}`;
     toast.classList.remove("hidden");
 
-    setTimeout(() =>{
+    setTimeout(() => {
         toast.classList.add("hidden");
     }, 3000);
 }
