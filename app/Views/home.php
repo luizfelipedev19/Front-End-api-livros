@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BookManager</title>
-    <link rel="stylesheet" href="../css/home.css">
-</head>
-<body>
+
 <div id="toast" class="toast hidden"></div>
     <div class="dashboard">
 
@@ -100,7 +92,7 @@
 
         </main>
 
-        <div class="modal-overlay hidden" id="modalLivro">
+<div class="modal-overlay hidden" id="modalLivro">
     <div class="modal">
         <div class="modal-header">
             <h2>Cadastrar livro</h2>
@@ -130,9 +122,7 @@
         </form>
     </div>
 </div>
-
     </div>
 
-    <script src="../js/home.js"></script>
-</body>
-</html>
+    <script src="../../public/Models/home.js"></script>
+

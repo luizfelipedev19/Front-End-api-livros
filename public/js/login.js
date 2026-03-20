@@ -20,9 +20,6 @@ formLogin.addEventListener("submit", async function (event) {
 
         const dados = await resposta.json();
 
-        console.log("status", resposta.status);
-        console.log("ok", resposta.ok);
-        console.log("dados", dados);
 
         if (!resposta.ok || !dados.access_token || !dados.refresh_token) {
             localStorage.removeItem("access_token");
@@ -62,3 +59,6 @@ function mostrarPopup(mensagem, tipo = "success") {
         toast.classList.add("hidden");
     }, 3000);
 }
+
+
+//Essa pasta js eu vou colocar todos os recursos de javascript que vão ser utilizados para todos ou para vários

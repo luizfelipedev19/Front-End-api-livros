@@ -169,3 +169,84 @@ function mostrarPopup(mensagem, tipo = "success") {
         toast.classList.add("hidden");
     }, 3000);
 }
+
+async function enviarLivro(dados) {
+if (formLivro) {
+    formLivro.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        const titulo = document.getElementById("titulo").value.trim();
+        const autor = document.getElementById("autor").value.trim();
+        const ano = Number(document.getElementById("ano").value);
+
+    
+        try {
+            let resposta = await fetch("", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    titulo,
+                    autor,
+                    ano
+                })
+            });
+
+            if (resposta.status === 401) {
+                token = await renovarAccessToken();
+
+                if (!token) {
+                    mostrarPopup("Sessão expirada. Faça login novamente.", "error");
+                    window.location.href = "login.html";
+                    return;
+                }
+
+                resposta = await fetch("http://localhost:8080/livros", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`
+                    },
+                    body: JSON.stringify({
+                        titulo,
+                        autor,
+                        ano
+                    })
+                });
+            }
+
+            const texto = await resposta.text();
+            console.log("Resposta da API:", texto);
+
+            let dados;
+
+            try {
+                dados = JSON.parse(texto);
+            } catch {
+                throw new Error("A API não retornou JSON válido");
+            }
+
+            if (!resposta.ok) {
+                mostrarPopup(dados.mensagem || "Erro ao cadastrar livro", "error");
+                return;
+            }
+
+            mostrarPopup(dados.mensagem || "Livro cadastrado com sucesso", "success");
+            formLivro.reset();
+            fecharModal();
+
+        } catch (error) {
+            console.error(error);
+            mostrarPopup(error.message || "Erro ao conectar com a API", "error");
+        }
+    });
+}
+}
+
+export {
+    enviarLivro
+}
+
+//Controler só vai enviar os fetchs para o controllador php (app)
