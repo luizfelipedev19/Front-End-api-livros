@@ -124,5 +124,6 @@
 </div>
     </div>
 
-    <script src="../../public/Models/home.js"></script>
+    <script src="/Front-Biblioteca/public/Models/home.js"></script>
+    <script src="/Front-Biblioteca/public/js/inatividade.js"></script>
 

@@ -124,34 +124,6 @@ if (formLivro) {
     });
 }
 
-async function renovarAccessToken() {
-    const refreshToken = getRefreshToken();
-
-    if (!refreshToken) {
-        return null;
-    }
-
-    const resposta = await fetch("http://localhost:8080/refresh", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            refresh_token: refreshToken
-        })
-    });
-
-    if (!resposta.ok) {
-        localStorage.removeItem("access_token");
-        localStorage.removeItem("refresh_token");
-        return null;
-    }
-
-    const dados = await resposta.json();
-    localStorage.setItem("access_token", dados.access_token);
-
-    return dados.access_token;
-}
 
 function mostrarPopup(mensagem, tipo = "success") {
     const toast = document.getElementById("toast");
