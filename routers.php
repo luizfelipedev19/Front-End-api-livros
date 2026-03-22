@@ -38,4 +38,16 @@ return [
         "controller" => "LogoutController",
         "action" => "logout"
     ],
+    [
+        "method" => "POST",
+        "path" => "/upload-foto",
+        "controller" => "UploadFotoController",
+        "action" => "uploadFotoPerfil"
+    ],
+    [
+        "method" => "POST",
+        "path" => "/livros",
+        "controller" => "LivroController",
+        "action" => "criarLivro"
+    ]
 ];

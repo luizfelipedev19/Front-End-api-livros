@@ -14,6 +14,42 @@ class HomeController {
 
         verifyAuth(); //aqui verifico a autenticação e a sessão, se tiver expirado ou não tiver token/UUID, redireciona para o login.
 
+        $token = $_SESSION['token'] ?? null;
+        $uuid = $_SESSION['UUID'] ?? null;
+
+        $ch = curl_init('http://localhost:8080/livros');
+
+        curl_setopt_array($ch, [
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_TIMEOUT        => 10,
+            CURLOPT_HTTPHEADER     => [
+                'Content-Type: application/json',
+                'Accept: application/json',
+                'Authorization: Bearer ' . $token,
+                'X-User-UUID: ' . $uuid
+            ]
+        ]);
+
+        $response = curl_exec($ch);
+
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+
+        $livros = [];
+        $total = 0;
+
+        file_put_contents(__DIR__ . '/../../debug_home.log',
+    "HTTP: $httpCode | Response: $response" . PHP_EOL,
+    FILE_APPEND
+);
+
+
+        if($httpCode === 200){
+            $data = json_decode($response, true) ?? [];
+            $livros = $data['livros'] ?? [];
+            $total = $data['paginacao']['total'] ?? 0;
+        }
+
         require __DIR__ . '/../Views/home.php';
     }
 }

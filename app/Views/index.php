@@ -4,6 +4,14 @@ if(isset($_GET['error']) && $_GET['error'] === 'session_expired'): ?>
 <p>Sessão encerrada. Faça login novamente.</p>
 <?php endif; ?>
 
+<?php
+require_once __DIR__ . '/../Utils/flash.php';
+$flash = getFlash();
+?>
+
+<head>
+    <link rel="stylesheet" href="/Front-Biblioteca/public/css/style.css">
+</head>
 
     <div id="toast" class="toast hidden"></div>
     
@@ -12,7 +20,7 @@ if(isset($_GET['error']) && $_GET['error'] === 'session_expired'): ?>
             <h3>Login</h3>
             <div class="campo">
                 <div class="campo-input">
-                <img src="../img/email.svg" alt="" class="icon">
+                <img src="/Front-Biblioteca/public/img/email.svg" alt="" class="icon">
                 <label for="email">Email</label>
                 <input type="text" placeholder="Digite seu e-mail" id="email" name="email">
                 </div>
@@ -20,7 +28,7 @@ if(isset($_GET['error']) && $_GET['error'] === 'session_expired'): ?>
 
             <div class="campo">
                 <div class="campo-input">
-                    <img src="../img/cadeado.png" alt="" class="icon">
+                    <img src="/Front-Biblioteca/public/img/cadeado.png" alt="" class="icon">
                 <label for="senha">Senha</label>
                 <input type="password" placeholder="Digite a sua senha" id="senha" name="senha">
                 </div>
@@ -31,4 +39,15 @@ if(isset($_GET['error']) && $_GET['error'] === 'session_expired'): ?>
         </form>
     </section>
 
-    <script src="../../public/js/login.js"></script>
+    <script src="/Front-Biblioteca/public/js/login.js"></script>
+    <script src="/Front-Biblioteca/public/js/popup.js"></script>
+    
+
+<?php if ($flash): // mostrar popup ?> 
+    <script>
+            mostrarPopup(
+                "<?=  $flash['mensagem'] ?>",
+                "<?=  $flash['tipo'] ?>"
+            );
+        </script>
+<?php endif; ?>

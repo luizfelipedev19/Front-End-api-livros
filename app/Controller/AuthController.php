@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . '/../Utils/flash.php';
+
 class AuthController
 {
     public function showLogin()
@@ -13,14 +15,17 @@ class AuthController
         $senha = trim($_POST['senha'] ?? '');
 
         if ($email === '' || $senha === '') {
-            echo "Preencha todos os campos";
-            return;
+            setFlash('Preencha todos os campos', 'erro');
+            header('Location: /Front-Biblioteca/');
+            exit();
         }
 
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            echo "Email inválido";
-            return;
+            setFlash('Email inválido' , 'erro');
+            header('Location: /Front-Biblioteca/');
+            exit();
         }
+        
 
         $uri = 'http://localhost:8080/login';
 
@@ -56,15 +61,22 @@ class AuthController
         $data = json_decode($response, true) ?? [];
 
 
+
         if ($httpCode === 200) {
+
+            setFlash('Login realizado com sucesso!', 'success');
+
             $_SESSION['token'] = $data['access_token'] ?? null;
             $_SESSION['UUID'] = $data['UUID'] ?? null;
             $_SESSION['last_activity'] = time();
+            $_SESSION['nome'] = $data['nome'] ?? null;
+            $_SESSION['foto_perfil'] = $data['foto_perfil'] ?? null;
 
             header('Location: /Front-Biblioteca/home');
             exit();
         } else {
-            echo htmlspecialchars($data['message'] ?? 'Erro ao fazer login');
-        }
+            setFlash('Email ou senha inválidos', 'erro');
+            header('Location: /Front-Biblioteca/');
+            exit();}
     }
 }

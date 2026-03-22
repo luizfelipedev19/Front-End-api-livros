@@ -20,8 +20,5 @@ function verificarInatividade() {
     }
 }
 
-document.addEventListener("mousemove", registrarInatividade);
-document.addEventListener("keydown", registrarInatividade);
 document.addEventListener("click", registrarInatividade);
-document.addEventListener("scroll", registrarInatividade);  
 setInterval(verificarInatividade, 1000); // Verificar a cada segundo

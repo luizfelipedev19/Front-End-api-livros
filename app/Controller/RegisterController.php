@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . '/../Utils/flash.php';
+
 class RegisterController {
    public function showRegister(){
     require __DIR__ . '/../Views/register.php';
@@ -49,13 +51,17 @@ class RegisterController {
         echo "Erro ao conectar com a API";
         return;
     }
+    
     $data = json_decode($response, true) ?? [];
 
     if ($httpCode === 200 || $httpCode === 201) {
+        setFlash('Usuário cadastrado com sucesso', 'success');
         header('Location: /Front-Biblioteca/');
         exit();
     } else {
-        echo htmlspecialchars($data['message'] ?? 'Erro ao cadastrar usuário');
+        setFlash('Erro ao cadastrar usuário', 'erro');
+        header('Location: /Front-Biblioteca/register');
+        exit();
     }
    }
 }

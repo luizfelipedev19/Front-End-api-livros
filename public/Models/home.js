@@ -1,8 +1,3 @@
-const abrirModalLivro = document.getElementById("abrirModalLivro");
-const fecharModalLivro = document.getElementById("fecharModalLivro");
-const cancelarModalLivro = document.getElementById("cancelarModalLivro");
-const modalLivro = document.getElementById("modalLivro");
-const formLivro = document.getElementById("formLivro");
 
 function abrirModal() {
     modalLivro.classList.remove("hidden");
