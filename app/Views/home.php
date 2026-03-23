@@ -19,6 +19,7 @@ $srcFoto     = $fotoPerfil ? htmlspecialchars($fotoPerfil) : '/Front-Biblioteca/
 
     <aside class="sidebar">
         <div class="logo">BM</div>
+        <div id="menuOverlay" class="menu-overlay"></div>
         <nav class="menu">
             <ul>
                 <li><a href="#">Home</a></li>
@@ -250,6 +251,7 @@ $srcFoto     = $fotoPerfil ? htmlspecialchars($fotoPerfil) : '/Front-Biblioteca/
 <script src="/Front-Biblioteca/public/js/popup.js"></script>
 <script src="/Front-Biblioteca/public/js/inatividade.js"></script>
 <script src="/Front-Biblioteca/public/js/home.js"></script>
+<script src="/Front-Biblioteca/public/Models/home.js"></script>
 
 <?php if ($flash): ?>
     <script>

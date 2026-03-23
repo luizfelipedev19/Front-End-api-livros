@@ -1,28 +1,18 @@
 
-function abrirModal() {
-    modalLivro.classList.remove("hidden");
-}
+const logo = document.querySelector(".logo");
+const menu = document.querySelector(".menu");
+const menuOverlay = document.getElementById("menuOverlay");
 
-function fecharModal() {
-    modalLivro.classList.add("hidden");
-}
-
-if (abrirModalLivro) {
-    abrirModalLivro.addEventListener("click", abrirModal);
-}
-
-if (fecharModalLivro) {
-    fecharModalLivro.addEventListener("click", fecharModal);
-}
-
-if (cancelarModalLivro) {
-    cancelarModalLivro.addEventListener("click", fecharModal);
-}
-
-if (modalLivro) {
-    modalLivro.addEventListener("click", function (event) {
-        if (event.target === modalLivro) {
-            fecharModal();
-        }
+if (logo && menu) {
+    logo.addEventListener("click", () => {
+        menu.classList.toggle("aberto");
+        if (menuOverlay) menuOverlay.classList.toggle("aberto");
     });
+
+    if(menuOverlay) {
+        menuOverlay.addEventListener("click", () => {
+            menu.classList.remove("aberto");
+            menuOverlay.classList.remove("aberto");
+        });
+    }
 }

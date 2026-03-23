@@ -504,7 +504,7 @@ body {
 .detalhe-item {
     display: flex;
     flex-direction: column;
-    gap 4px;
+    gap: 4px;
 }
 
 .detalhe-labe {
@@ -569,4 +569,125 @@ body {
 .livro-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.10);
+}
+@media (max-width: 768px) {
+
+    .dashboard {
+        flex-direction: column;
+    }
+
+    /* Esconde sidebar no mobile */
+    .sidebar {
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        align-items: center;
+        padding: 10px 16px;
+        gap: 12px;
+        overflow: visible;
+    }
+
+    .sidebar:hover {
+        width: 100%;
+    }
+
+    /* Menu escondido no mobile por padrão */
+    .menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 75%;
+        height: 100vh;
+        background: #eaf1fb;
+        z-index: 9999;
+        padding: 30px 20px;
+        box-shadow: 4px 0 20px rgba(0,0,0,0.15);
+        transition: transform 0.3s ease;
+    }
+
+    .menu.aberto {
+        display: block;
+    }
+
+    .menu ul {
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 20px;
+    }
+
+    .menu a {
+        opacity: 1;
+        font-size: 1rem;
+        padding: 14px 16px;
+    }
+
+    .logo {
+        margin-bottom: 0;
+        cursor: pointer;
+    }
+
+    .content {
+        padding: 16px;
+        gap: 16px;
+    }
+
+    .topbar h1 {
+        font-size: 1.3rem;
+    }
+
+    .user-area span {
+        display: none;
+    }
+
+    .cards-resumo {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .acoes-filtros {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .busca-filtros {
+        padding: 12px;
+    }
+
+    .filtros {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .lista-livros {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .modal {
+        max-width: 95vw;
+        padding: 16px;
+        margin: 0 10px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .detalhes-info {
+        grid-template-columns: 1fr;
+    }
+
+    /* Overlay escuro quando menu aberto */
+    .menu-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.4);
+        z-index: 9998;
+    }
+
+    .menu-overlay.aberto {
+        display: block;
+    }
 }
