@@ -69,7 +69,7 @@ class UploadFotoController {
         $token = $_SESSION['token'] ?? null;
         $uuid  = $_SESSION['UUID'] ?? null;
 
-        $ch = curl_init('http://localhost:8080/usuario/foto');
+        $ch = curl_init('http://api_livros_app:80/usuario/foto');
 
         curl_setopt_array($ch, [
             CURLOPT_CUSTOMREQUEST  => 'PATCH',

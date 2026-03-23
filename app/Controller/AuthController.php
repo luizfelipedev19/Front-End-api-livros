@@ -27,7 +27,7 @@ class AuthController
         }
         
 
-        $uri = 'http://localhost:8080/login';
+        $uri = 'http://api_livros_app:80/login';
 
         $payload = json_encode([
             'email' => $email,

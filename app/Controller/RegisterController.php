@@ -22,7 +22,7 @@ class RegisterController {
         return;
     }
 
-    define('API_URL', 'http://localhost:8080');
+    define('API_URL', 'http://api_livros_app:80');
     
     $uri = API_URL . '/register';
 

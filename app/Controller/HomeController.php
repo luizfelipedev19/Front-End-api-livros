@@ -17,7 +17,7 @@ class HomeController {
         $token = $_SESSION['token'] ?? null;
         $uuid = $_SESSION['UUID'] ?? null;
 
-        $ch = curl_init('http://localhost:8080/livros');
+        $ch = curl_init('http://api_livros_app:80/livros');
 
         curl_setopt_array($ch, [
             CURLOPT_RETURNTRANSFER => true,

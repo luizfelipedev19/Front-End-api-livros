@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  front-biblioteca:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: front_biblioteca_app
+    ports:
+      - "8082:80"
+    volumes:
+      - .:/var/www/html
+    environment:
+      - APACHE_DOCUMENT_ROOT=/var/www/html
+    restart: unless-stopped
+    networks:
+      - api-livros_api_livros_net
+
+networks:
+  api-livros_api_livros_net:
+    external: true
