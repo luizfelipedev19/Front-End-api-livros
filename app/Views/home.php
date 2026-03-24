@@ -25,9 +25,8 @@ $srcFoto     = $fotoPerfil ? htmlspecialchars($fotoPerfil) : '/Front-Biblioteca/
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Meus livros</a></li>
                 <li><a href="#">Favoritos</a></li>
-                <li><a href="#">Adicionar livro</a></li>
-                <li><a href="#">Perfil</a></li>
-                <li><a href="#">Configurações</a></li>
+                <li><a href="#">Citações</a></li>
+                <li><a href="/Front-Biblioteca/perfil">Perfil</a></li>
             </ul>
         </nav>
     </aside>

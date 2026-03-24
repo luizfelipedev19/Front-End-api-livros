@@ -11,8 +11,10 @@ $srcFoto     = $fotoPerfil ? htmlspecialchars
 $email = $_SESSION['email'] ?? null;
 ?>
 
+
+
 <head>
-    <link rel="stylesheet" href="/Front-Biblioteca/public/css/home.css">
+    <link rel="stylesheet" href="/Front-Biblioteca/public/css/perfil.css">
 </head>
 
 <div id="toast" class="toast hidden"></div>
@@ -23,12 +25,11 @@ $email = $_SESSION['email'] ?? null;
         <div class="logo">BM</div>
         <nav class="menu">
             <ul>
-                <li><a href="#">Home</a></li>
+                <li><a href="/Front-Biblioteca/home">Home</a></li>
                 <li><a href="#">Meus livros</a></li>
                 <li><a href="#">Favoritos</a></li>
-                <li><a href="#">Adicionar livro</a></li>
-                <li><a href="#">Perfil</a></li>
-                <li><a href="#">Configurações</a></li>
+                <li><a href="#">Citações</a></li>
+                <li><a href="/Front-Biblioteca/perfil">Perfil</a></li>
             </ul>
         </nav>
     </aside>
@@ -48,7 +49,7 @@ $email = $_SESSION['email'] ?? null;
                 
                 <div class="perfil-card">
                     <div class="perfil-foto-wrapper">
-                        <img src="<?= $srcFoto ?>" alt="Foto do usuário" id="fotoPerfilCard">
+                        <img class="fotoDePerfil" src="<?= $srcFoto ?>" alt="Foto do usuário" id="fotoPerfilCard">
                         <button type="button" id="btnAlterarFoto">Altera foto</button>
                     </div>
 
@@ -117,6 +118,7 @@ $email = $_SESSION['email'] ?? null;
 <script src="/Front-Biblioteca/public/js/popup.js"></script>
 <script src="/Front-Biblioteca/public/js/inatividade.js"></script>
 <script src="/Front-Biblioteca/public/js/home.js"></script>
+<script src="/Front-Biblioteca/public/Controller/perfil.js"></script>
 
 <?php if ($flash): ?>
     <script>

@@ -107,7 +107,16 @@ function fecharModal() {
 }
 
 if (abrirModalLivro) {
-    abrirModalLivro.addEventListener("click", abrirModal);
+    abrirModalLivro.addEventListener("click", () => {
+        formLivro.reset();
+        formLivro.action = `/livros`;
+        document.querySelector("#modalLivro .modal-header h2").textContent = "Cadastrar livro";
+
+        document.getElementById("avaliacao").value = "";
+        document.querySelectorAll(".estrela").forEach((e) => e.classList.remove("ativa"));
+
+        abrirModal();
+    });
 }
 
 if (fecharModalLivro) {
@@ -199,7 +208,7 @@ if (btnDeletarLivro) {
     btnDeletarLivro.addEventListener("click", async () => {
         if (!confirm("Tem certeza que deseja deletar este livro?")) return;
 
-        const resposta = await fetch(`/Front-Biblioteca/livros/deletar?id=${livroAtualId}`, {
+        const resposta = await fetch(`/livros/deletar?id=${livroAtualId}`, {
             method: "POST"
         });
 
@@ -214,17 +223,30 @@ if (btnDeletarLivro) {
 
 // Editar livro
 const btnEditarLivro = document.getElementById("btnEditarLivro");
+
 if (btnEditarLivro) {
     btnEditarLivro.addEventListener("click", () => {
-        fecharModalGenerico(modalDetalhes, () => {
-            document.getElementById("titulo").value    = document.getElementById("detalhesTitulo").textContent;
-            document.getElementById("autor").value     = document.getElementById("detalhesAutor").textContent;
-            document.getElementById("ano").value       = document.getElementById("detalhesAno").textContent;
-            document.getElementById("anotacoes").value = document.getElementById("detalhesAnotacoes").textContent === "Nenhuma anotação"
-                ? ""
-                : document.getElementById("detalhesAnotacoes").textContent;
+        const card = document.querySelector(`.livro-card[data-id="${livroAtualId}"]`);
+        if (!card) return;
 
-            document.getElementById("formLivro").dataset.editandoId = livroAtualId;
+        fecharModalGenerico(modalDetalhes, () => {
+            document.getElementById("titulo").value = card.dataset.titulo || "";
+            document.getElementById("autor").value = card.dataset.autor || "";
+            document.getElementById("ano").value = card.dataset.ano || "";
+            document.getElementById("genero").value = card.dataset.genero || "";
+            document.getElementById("status").value = card.dataset.status || "quero_ler";
+            document.getElementById("anotacoes").value = card.dataset.anotacoes || "";
+
+            const avaliacao = card.dataset.avaliacao || "";
+            document.getElementById("avaliacao").value = avaliacao;
+
+            const estrelas = document.querySelectorAll(".estrela");
+            estrelas.forEach((e) => {
+                const valor = parseInt(e.dataset.valor);
+                e.classList.toggle("ativa", avaliacao && valor <= parseInt(avaliacao));
+            });
+
+            formLivro.action = `/livros/editar?id=${livroAtualId}`;
             document.querySelector("#modalLivro .modal-header h2").textContent = "Editar livro";
 
             abrirModalGenerico(modalLivro);

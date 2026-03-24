@@ -49,5 +49,23 @@ return [
         "path" => "/livros",
         "controller" => "LivroController",
         "action" => "criarLivro"
+    ],
+    [
+        "method" => "GET",
+        "path" => "/perfil",
+        "controller" => "PerfilController",
+        "action" => "showPerfil"
+    ],
+    [
+        "method" => "POST",
+        "path" => "/livros/editar",
+        "controller" => "LivroController",
+        "action" => "editarLivro"
+    ],
+    [
+        "method" => "POST",
+        "path" => "/livros/deletar",
+        "controller" => "LivroController",
+        "action" => "deletarLivro"
     ]
 ];

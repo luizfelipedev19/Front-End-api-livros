@@ -4,7 +4,7 @@ $uuid = $_SESSION['UUID'] ?? null;
 
 require_once __DIR__ . '/../Utils/auth.php';
 
-if (!$token || !$UUID) {
+if (!$token || !$uuid) {
     header('Location: /Front-Biblioteca/');
     exit();
 }
@@ -26,7 +26,7 @@ class PerfilController {
             CURLOPT_HTTPHEADER => [
                 'Content-Type: application/json',
                 'Accept: application/json',
-                'Authorization: Bearer' . $token,
+                'Authorization: Bearer ' . $token,
                 'X-User-UUID: ' . $uuid
             ]
         ]);
@@ -44,6 +44,11 @@ class PerfilController {
             $data = json_decode($response, true) ?? [];
             $livros = $data['livros'] ??  [];
             $total = $data['paginacao'] ['total'] ?? 0;
+
+
+            $lendo    = count(array_filter($livros, fn($l) => $l['status'] === 'lendo'));
+            $lidos    = count(array_filter($livros, fn($l) => $l['status'] === 'lido'));
+            $quero_ler = count(array_filter($livros, fn($l) => $l['status'] === 'quero_ler'));
         }
 
         require __DIR__ . '/../Views/perfil.php';
