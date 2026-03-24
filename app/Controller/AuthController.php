@@ -71,6 +71,7 @@ class AuthController
             $_SESSION['last_activity'] = time();
             $_SESSION['nome'] = $data['nome'] ?? null;
             $_SESSION['foto_perfil'] = $data['foto_perfil'] ?? null;
+            $_SESSION['email'] = $data['email'] ?? null;
 
             header('Location: /Front-Biblioteca/home');
             exit();
