@@ -73,7 +73,7 @@ input {
     border-radius: 6px;
 }
 
-button {
+.btnLogin {
     padding: 13px;
     width: 100%;
     margin-top: 8px;
@@ -88,17 +88,33 @@ button {
     margin-bottom: 16px;
 }
 
-.acoes {
-    text-decoration: none;
-    font-size: 0.875rem;
+.acoes-container {
     display: flex;
-    justify-content: center;
-    color: #3b82f6;
+    justify-content: space-between;
     
 }
-button:hover {
+.acoes-container a {
+text-decoration: none;
+background: none;
+font-size: 0.8rem;
+color: #64748b;
+}
+
+.btnLogin:hover {
     background-color: #2563eb;
 }
+
+.btnEsqueceu {
+    background-color: #6b7280;
+    color: white;
+    font-size: 0.67rem;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    
+}
+
 a:hover {
     text-decoration: underline;
 }

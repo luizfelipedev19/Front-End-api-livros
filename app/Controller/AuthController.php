@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/../Utils/flash.php';
-
+// responsável por logar o usuário no site, consumindo o endpoint login da api em php que está separada. 
 class AuthController
 {
     public function showLogin()

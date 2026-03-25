@@ -117,8 +117,9 @@ $email = $_SESSION['email'] ?? null;
 
 <script src="/Front-Biblioteca/public/js/popup.js"></script>
 <script src="/Front-Biblioteca/public/js/inatividade.js"></script>
-<script src="/Front-Biblioteca/public/js/home.js"></script>
-<script src="/Front-Biblioteca/public/Controller/perfil.js"></script>
+<script src="/Front-Biblioteca/public/js/modalFoto.js"></script>
+<script src="../../public/Models/home.js"></script>
+<script src="../../public/Models/perfil.js"></script>
 
 <?php if ($flash): ?>
     <script>

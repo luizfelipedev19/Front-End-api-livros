@@ -6,6 +6,7 @@ require_once __DIR__ . '/../Utils/auth.php';
 
 class LivroController {
 
+// criar livro ->
     public function criarLivro(): void {
 
     verifyAuth();
@@ -69,9 +70,13 @@ class LivroController {
 
     header('Location: /Front-Biblioteca/home');
     exit();
+    // fim da função de criar livro 
 }
 
+
+
 public function editarLivro(): void{
+    // função para editar livros -> edpoint da api
     verifyAuth();
 
     $idLivro = $_GET['id'] ?? null;
@@ -136,9 +141,13 @@ public function editarLivro(): void{
 
     header('location: /Front-Biblioteca/home');
     exit();
+
+    //fim da função de editar
 }
 
 public function deletarLivro(): void {
+
+//função que consome o endpoit da api que serve para deletar os livros cadastrados
     verifyAuth();
 
     $idLivro = $_GET['id'] ?? null;
@@ -181,5 +190,7 @@ public function deletarLivro(): void {
 
     header('location: /Front-Biblioteca/home');
     exit();
+
+    //fim da função
 }
 }

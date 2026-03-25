@@ -33,10 +33,14 @@ $flash = getFlash();
                 <input type="password" placeholder="Digite a sua senha" id="senha" name="senha">
                 </div>
             </div>
-            <button type="submit">Login</button>
-            <a href="/Front-Biblioteca/register" class="acoes">Cadastre-se aqui</a>
-            
+            <button class="btnLogin" type="submit">Login</button>
+
+            <div class="acoes-container">
+            <button class="btnEsqueceu" id="esqueceuSenha">Esqueceu a senha? Clique aqui</button>
+            <a href="/Front-Biblioteca/register">Cadastre-se aqui</a>
+            </div>
         </form>
+        
     </section>
 
     <script src="/Front-Biblioteca/public/js/login.js"></script>

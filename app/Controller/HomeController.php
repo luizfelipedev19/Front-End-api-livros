@@ -10,6 +10,8 @@ if (!$token || !$UUID) {
 }
 
 class HomeController {
+
+// essa função eu uso para carregar a home e trazendo os livros que o usuário cadastrou
     public function showHome(){
 
         verifyAuth(); //aqui verifico a autenticação e a sessão, se tiver expirado ou não tiver token/UUID, redireciona para o login.

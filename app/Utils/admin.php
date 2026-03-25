@@ -1,1 +1,0 @@
-//Dentro desta pasta utils, eu vou criar tudo que vou usar no geral, que seja util, qualquer lugar que seja util para o php

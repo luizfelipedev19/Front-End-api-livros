@@ -1,4 +1,6 @@
 <?php
+
+//função em php responsavel por exibir os poups de mensagem na tela
 function setFlash (string $mensagem, string $tipo ='erro'): void {
     $_SESSION['flash'] = [
         'mensagem' => $mensagem,

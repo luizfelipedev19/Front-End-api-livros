@@ -10,7 +10,7 @@ if (!$token || !$uuid) {
 }
 
 class PerfilController {
-
+// função que consome o endpoint do perfil da api, onde carrega o nome, email e livros lidos na side bar perfil
     public function showPerfil(){
         verifyAuth();
 
