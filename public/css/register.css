@@ -228,7 +228,7 @@ a:hover {
     right: 0;
 
 
-    width: 140%;   /* 🔥 aumenta o tamanho */
+    width: 140%;   /*  aumenta o tamanho */
     height: 100%;
 
     background: rgba(255, 255, 255, 0.10);
@@ -241,14 +241,14 @@ a:hover {
     z-index: 1;
 }
 .card-bg {
-    animation: fadeUp 0.6s ease-out;
-    animation-delay: 0.2s;
+    animation: fadeUp 0.8s backwards;
+    animation-delay: 0.4s;
     animation-fill-mode: backwards;
 }
 @keyframes fadeUp {
     from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(40px);
     }
     to {
         opacity: 1;

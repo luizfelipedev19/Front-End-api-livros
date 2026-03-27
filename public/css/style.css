@@ -139,6 +139,28 @@ a:hover {
 .toast.erro {
     background-color: #f44336;
 }
+
+.container-recuperar {
+    display: flex;
+    background: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    animation: fadeUp 0.6s ease-out;
+    animation-delay: 0.4s;
+    animation-fill-mode: backwards;
+}
+.container-form-recuperar button {
+    background-color: #3b82f6;
+    border: none;
+    padding: 5px;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+
+
 @keyframes fadeUp {
     from {
         opacity: 0;

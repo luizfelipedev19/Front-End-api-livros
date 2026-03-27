@@ -14,8 +14,9 @@ $basePath = '/Front-Biblioteca';
 
 $uri = str_replace($basePath, '', $uri);
 
-if($uri === ''){
-    $uri = '/';
+// remove barra no final (exceto se for só "/")
+if ($uri !== '/') {
+    $uri = rtrim($uri, '/');
 }
 
 $routeFound = false;

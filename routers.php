@@ -67,5 +67,23 @@ return [
         "path" => "/livros/deletar",
         "controller" => "LivroController",
         "action" => "deletarLivro"
+    ],
+    [
+        "method" => "POST",
+        "path" => "/recuperar-senha",
+        "controller" => "SenhaController",
+        "action" => "solicitarRecuperacao"
+    ],
+        [
+    "method" => "GET",
+    "path" => "/redefinir-senha",
+    "controller" => "SenhaController",
+    "action" => "mostrarTelaRedefinir"
+    ],
+        [
+        "method" => "POST",
+        "path" => "/redefinir-senha",
+        "controller" => "SenhaController",
+        "action" => "redefinirSenha"
     ]
 ];

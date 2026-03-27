@@ -35,15 +35,26 @@ $flash = getFlash();
             </div>
             <button class="btnLogin" type="submit">Login</button>
 
-            <div class="acoes-container">
-            <button class="btnEsqueceu" id="esqueceuSenha">Esqueceu a senha? Clique aqui</button>
+            <div  class="acoes-container">
+            <button type="button" class="btnEsqueceu" id="esqueceuSenha" onclick="abrirModalSenha()">Esqueceu a senha? Clique aqui</button>
+
             <a href="/Front-Biblioteca/register">Cadastre-se aqui</a>
             </div>
         </form>
+
+        <div id="modalRecuperacao" style="display: none;" class="container-recuperar">
+                <form action="/Front-Biblioteca/recuperar-senha" method="POST" class="container-form-recuperar">
+                    <h3>Recuperar senha</h3>
+                    <input type="email" name="email" placeholder="Digite seu e-mail" required>
+                    <button type="submit" name="recuperar">Enviar</button>
+                </form>
+            </div>
+
         
     </section>
 
     <script src="/Front-Biblioteca/public/js/login.js"></script>
+    <script src="../../public/Models/index.js"></script>
     <script src="/Front-Biblioteca/public/js/popup.js"></script>
     
 
