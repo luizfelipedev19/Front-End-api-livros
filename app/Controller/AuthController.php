@@ -62,7 +62,7 @@ class AuthController
 
 
 
-        if ($httpCode === 200) {
+        if (($data['success'] ?? false) === true) {
 
             setFlash('Login realizado com sucesso!', 'success');
 

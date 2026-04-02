@@ -24,7 +24,10 @@ function fecharModal() {
 if (abrirModalLivro) {
     abrirModalLivro.addEventListener("click", () => {
         formLivro.reset();
-        formLivro.action = `/livros`;
+
+        document.getElementById("id_livro").value = "";
+
+
         document.querySelector("#modalLivro .modal-header h2").textContent = "Cadastrar livro";
 
         document.getElementById("avaliacao").value = "";
@@ -93,9 +96,12 @@ const btnDeletarLivro = document.getElementById("btnDeletarLivro");
 if (btnDeletarLivro) {
     btnDeletarLivro.addEventListener("click", async () => {
         if (!confirm("Tem certeza que deseja deletar este livro?")) return;
-
-        const resposta = await fetch(`/livros/deletar?id=${livroAtualId}`, {
-            method: "POST"
+        const resposta = await fetch(`/Front-Biblioteca/livro/deletar`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: `id_livro=${encodeURIComponent(livroAtualId)}`
         });
 
         if (resposta.ok) {
@@ -116,6 +122,8 @@ if (btnEditarLivro) {
         if (!card) return;
 
         fecharModalGenerico(modalDetalhes, () => {
+
+            document.getElementById("id_livro").value = livroAtualId;
             document.getElementById("titulo").value = card.dataset.titulo || "";
             document.getElementById("autor").value = card.dataset.autor || "";
             document.getElementById("ano").value = card.dataset.ano || "";
@@ -131,8 +139,6 @@ if (btnEditarLivro) {
                 const valor = parseInt(e.dataset.valor);
                 e.classList.toggle("ativa", avaliacao && valor <= parseInt(avaliacao));
             });
-
-            formLivro.action = `/livros/editar?id=${livroAtualId}`;
             document.querySelector("#modalLivro .modal-header h2").textContent = "Editar livro";
 
             abrirModalGenerico(modalLivro);

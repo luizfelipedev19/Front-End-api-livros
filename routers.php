@@ -46,9 +46,9 @@ return [
     ],
     [
         "method" => "POST",
-        "path" => "/livros",
+        "path" => "/livros/salvar",
         "controller" => "LivroController",
-        "action" => "criarLivro"
+        "action" => "salvarLivro"
     ],
     [
         "method" => "GET",
@@ -64,7 +64,7 @@ return [
     ],
     [
         "method" => "POST",
-        "path" => "/livros/deletar",
+        "path" => "/livro/deletar",
         "controller" => "LivroController",
         "action" => "deletarLivro"
     ],

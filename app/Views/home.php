@@ -143,8 +143,9 @@ $srcFoto     = $fotoPerfil ? htmlspecialchars($fotoPerfil) : '/Front-Biblioteca/
             <button type="button" class="fechar-modal" id="fecharModalLivro">&times;</button>
         </div>
 
-        <form id="formLivro" action="/Front-Biblioteca/livros" method="POST">
+        <form id="formLivro" action="/Front-Biblioteca/livros/salvar" method="POST">
             <div class="form-group">
+                <input type="hidden" id="id_livro" name="id_livro">
                 <label for="titulo">Título *</label>
                 <input type="text" id="titulo" name="titulo" placeholder="Digite o título do livro" required>
             </div>

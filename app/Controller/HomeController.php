@@ -43,8 +43,8 @@ class HomeController {
 
         if($httpCode === 200){
             $data = json_decode($response, true) ?? [];
-            $livros = $data['livros'] ?? [];
-            $total = $data['paginacao']['total'] ?? 0;
+            $livros = $data['detail']['livros'] ?? [];
+            $total = $data['detail']['paginacao']['total'] ?? 0;
         }
 
         require __DIR__ . '/../Views/home.php';

@@ -13,14 +13,17 @@ class RegisterController {
     $senha = trim($_POST['senha'] ?? '');
 
     if($nome === '' || $email === '' || $senha === ''){
-        echo "Preencha todos os campos";
-        return;
+        setFlash('Preencha todos os campos', 'erro');
+        header('Location: /Front-Biblioteca/register');
+        exit();
     }
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo "Email inválido";
-        return;
+        setFlash('Email inválido', 'erro');
+        header('Location: /Front-Biblioteca/register');
+        exit();
     }
+    
 
     define('API_URL', 'http://api_livros_app:80');
     
@@ -48,20 +51,27 @@ class RegisterController {
     curl_close($ch);
 
     if ($response == false){
-        echo "Erro ao conectar com a API";
-        return;
+        setFlash('Erro ao conectar com a API', 'erro');
+        header('Location: /Front-Biblioteca/register');
+        exit();
     }
     
     $data = json_decode($response, true) ?? [];
 
-    if ($httpCode === 200 || $httpCode === 201) {
-        setFlash('Usuário cadastrado com sucesso', 'success');
-        header('Location: /Front-Biblioteca/');
-        exit();
-    } else {
-        setFlash('Erro ao cadastrar usuário', 'erro');
-        header('Location: /Front-Biblioteca/register');
-        exit();
-    }
-   }
+if (($data['success'] ?? false) === true) {
+    setFlash('Usuário cadastrado com sucesso', 'success');
+    header('Location: /Front-Biblioteca/');
+    exit();
+
+} elseif ($httpCode === 409) {
+    setFlash($data['mensagem'] ?? 'Não foi possível cadastrar. Este e-mail já está sendo utilizado.', 'erro');
+
+} else {
+    setFlash($data['mensagem'] ?? 'Erro ao cadastrar usuário. Tente novamente mais tarde.', 'erro');
+}
+
+header('Location: /Front-Biblioteca/register');
+exit();
+
+}
 }
