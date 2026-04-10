@@ -34,6 +34,12 @@ return [
     ],
     [
         "method" => "GET",
+        "path" => "/home/livros",
+        "controller" => "HomeController",
+        "action" => "listarLivros"
+    ],
+    [
+        "method" => "GET",
         "path" => "/logout",
         "controller" => "LogoutController",
         "action" => "logout"
@@ -74,13 +80,13 @@ return [
         "controller" => "SenhaController",
         "action" => "solicitarRecuperacao"
     ],
-        [
-    "method" => "GET",
-    "path" => "/redefinir-senha",
-    "controller" => "SenhaController",
-    "action" => "mostrarTelaRedefinir"
+    [
+        "method" => "GET",
+        "path" => "/redefinir-senha",
+        "controller" => "SenhaController",
+        "action" => "mostrarTelaRedefinir"
     ],
-        [
+    [
         "method" => "POST",
         "path" => "/redefinir-senha",
         "controller" => "SenhaController",

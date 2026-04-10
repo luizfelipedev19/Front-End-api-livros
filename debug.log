@@ -1,2 +1,4 @@
 HTTP: 200, Response: {"success":true,"mensagem":"Foto de perfil atualizada com sucesso","foto_perfil":"https:\/\/res.cloudinary.com\/dmqdttnsg\/image\/upload\/v1774636783\/biblioteca\/fotos\/bcd8e3fdcd73dd714431e2c04efe64.jpg"}
 , https://res.cloudinary.com/dmqdttnsg/image/upload/v1774636783/biblioteca/fotos/bcd8e3fdcd73dd714431e2c04efe64.jpg
+HTTP: 200, Response: {"success":true,"detail":{"mensagem":"Foto de perfil atualizada com sucesso","foto_perfil":"https:\/\/res.cloudinary.com\/dmqdttnsg\/image\/upload\/v1775836295\/biblioteca\/fotos\/9b0bc73d0d81f3862134d40afa90b6.jpg"}}
+, https://res.cloudinary.com/dmqdttnsg/image/upload/v1775836295/biblioteca/fotos/9b0bc73d0d81f3862134d40afa90b6.jpg

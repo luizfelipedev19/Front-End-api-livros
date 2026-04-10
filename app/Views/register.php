@@ -9,28 +9,17 @@ $flash = getFlash();
 
 <div id="div" class="toast hidden"></div>
 
-
-
-
-
-
 <section class="container">
-
-   
     <div class="card-wrapper">
-
 
         <div class="container-card">
             <h1><strong>BookManager</strong>, o seu gerenciador de livros.</h1>
-             <p class="texto2">Faça seu cadastro agora e tenha suas metas de leitura diárias batidas</p>
+            <p class="texto2">Faça seu cadastro agora e tenha suas metas de leitura diárias batidas</p>
         </div>
-
 
         <div class="card-bg"></div>
 
-
         <form action="/Front-Biblioteca/register" method="POST" class="container-form" id="formRegister">
-
             <h3>Cadastrar</h3>
 
             <div class="campo">
@@ -56,23 +45,21 @@ $flash = getFlash();
                     <input type="password" placeholder="Digite a sua senha" id="senha" name="senha">
                 </div>
             </div>
+
             <button type="submit">Cadastrar</button>
             <a href="/Front-Biblioteca/">Ja tem cadastro? Entre aqui</a>
         </form>
     </div>
 </section>
 
-<script src="../js/register.js">
-</script>
 <script src="/Front-Biblioteca/public/js/popup.js"></script>
+<script src="/Front-Biblioteca/public/Controller/register.js"></script>
 
-
-<?php if ($flash): // mostrar popup 
-?>
+<?php if ($flash): ?>
     <script>
         mostrarPopup(
-            "<?= $flash['mensagem'] ?>",
-            "<?= $flash['tipo'] ?>"
+            "<?= htmlspecialchars($flash['mensagem'], ENT_QUOTES, 'UTF-8') ?>",
+            "<?= htmlspecialchars($flash['tipo'], ENT_QUOTES, 'UTF-8') ?>"
         );
     </script>
 <?php endif; ?>

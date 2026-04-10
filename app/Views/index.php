@@ -53,16 +53,14 @@ $flash = getFlash();
         
     </section>
 
-    <script src="/Front-Biblioteca/public/js/login.js"></script>
-    <script src="../../public/Models/index.js"></script>
     <script src="/Front-Biblioteca/public/js/popup.js"></script>
-    
+<script src="/Front-Biblioteca/public/Models/index.js"></script>
 
-<?php if ($flash): // mostrar popup ?> 
+<?php if ($flash): ?> 
     <script>
-            mostrarPopup(
-                "<?=  $flash['mensagem'] ?>",
-                "<?=  $flash['tipo'] ?>"
-            );
-        </script>
+        mostrarPopup(
+            "<?= htmlspecialchars($flash['mensagem'], ENT_QUOTES, 'UTF-8') ?>",
+            "<?= htmlspecialchars($flash['tipo'], ENT_QUOTES, 'UTF-8') ?>"
+        );
+    </script>
 <?php endif; ?>
