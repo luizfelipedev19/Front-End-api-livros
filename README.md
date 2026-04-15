@@ -207,28 +207,3 @@ A dependencia principal declarada no projeto e:
 ```
 
 As demais bibliotecas presentes em `vendor/` sao dependencias transitivas instaladas pelo Composer.
-
-## Observacoes tecnicas
-
-O projeto possui uma base funcional bem definida e cobre os principais fluxos da aplicacao, mas ainda ha pontos naturais de evolucao estrutural, como:
-
-- consolidacao da organizacao do JavaScript
-- reducao de duplicacao de logica na home
-- padronizacao de respostas esperadas da API
-- externalizacao de configuracoes sensiveis para ambiente
-
-## Documentacao complementar
-
-A documentacao tecnica detalhada do projeto esta em:
-
-[DOCUMENTACAO_PROJETO.md](./DOCUMENTACAO_PROJETO.md)
-
-Esse arquivo aprofunda:
-
-- arquitetura
-- estrutura de pastas
-- rotas
-- controllers
-- integracao com API
-- fluxo de autenticacao
-- pontos de atencao tecnicos
